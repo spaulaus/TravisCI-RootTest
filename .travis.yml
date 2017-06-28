@@ -17,6 +17,7 @@ addons:
 before_install:
   - export CC=gcc-5 && export CXX=g++-5
   - gcc --version
+  - python --version
   - sudo apt-get -qq update
   - git clone https://github.com/unittest-cpp/unittest-cpp.git
   - cd unittest-cpp/builds/
@@ -25,7 +26,7 @@ before_install:
   - cd ../../
 
 install:
-  - ROOT_BUILD=ROOT-6.03.02_Python-${TRAVIS_PYTHON_VERSION}_GCC-4.8_x86_64
+  - ROOT_BUILD=ROOT-6.03.02_Python-2.7_GCC-4.8_x86_64
   - time wget --no-check-certificate https://copy.com/rtIyUdxgjt7h/ci/root_builds/${ROOT_BUILD}.tar.gz
   - time tar zxf ${ROOT_BUILD}.tar.gz
   - mv ${ROOT_BUILD} root
