@@ -23,15 +23,12 @@ before_install:
   - sudo make -j4 install
   - cd ../../
 
-before_script:
-  - mkdir build
-  - cd build
-  - cmake ../
-
-script:
-  - make -j4
-  - ./tests/unittest-Variable
+install:
+  - ROOT_BUILD=ROOT-6.03.02_Python-${TRAVIS_PYTHON_VERSION}_GCC-4.8_x86_64
+  - time wget --no-check-certificate https://copy.com/rtIyUdxgjt7h/ci/root_builds/${ROOT_BUILD}.tar.gz
+  - time tar zxf ${ROOT_BUILD}.tar.gz
+  - mv ${ROOT_BUILD} root
+  - source root/bin/thisroot.sh
 
 after_script:
-  - cd ../
-  - rm -rf build
+  - root-config --features
