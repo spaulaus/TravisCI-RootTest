@@ -25,9 +25,9 @@ before_install:
   - cd ../../
 
 install:
-  - time wget --no-check-certificate https://drive.google.com/open?id=0B_XQp_kYuMwQSzZERGZyVkdCM3c
-  - time tar zxf ROOT-6.03.02_Python-2.7_GCC-4.8_x86_64.tar.gz
-  - mv ROOT-6.03.02_Python-2.7_GCC-4.8_x86_64 root
+  - time wget --no-check-certificate https://drive.google.com/uc?export=download&id=0B_XQp_kYuMwQSzZERGZyVkdCM3c
+  - time tar zxf ROOT-6.03.02_Python-2.7.tar.gz
+  - mv ROOT-6.03.02_Python-2.7 root
   - source root/bin/thisroot.sh
 
 after_script:
