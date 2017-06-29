@@ -21,6 +21,6 @@ before_install:
 install:
   - time wget https://www.dropbox.com/s/vvk21n6uj45bg0x/root-v6-09-02-760-g97cc38c.tbz
   - time tar xjf root-v6-09-02-760-g97cc38c.tbz
-  - source /opt/root/root-v6-09-02-760-g97cc38c/bin/thisroot.sh
-  - source root/bin/thisroot.sh
+  - mv ./opt/root /opt
+  - source /opt/root/v6-09-02-760-g97cc38c/bin/thisroot.sh
   - root-config --features
