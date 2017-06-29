@@ -19,10 +19,8 @@ before_install:
   - sudo apt-get -qq update
 
 install:
-  - time wget https://www.dropbox.com/s/yboqu7ufznmvy6l/ROOT-6.03.02_Python-2.7.tar.gz
-  - time tar zxf ROOT-6.03.02_Python-2.7.tar.gz
-  - mv ROOT-6.03.02_Python-2.7/root .
+  - time wget https://www.dropbox.com/s/vvk21n6uj45bg0x/root-v6-09-02-760-g97cc38c.tbz
+  - time tar zjf root-v6-09-02-760-g97cc38c.tbz
+  - mv root-v6-09-02-760-g97cc38c root .
   - source root/bin/thisroot.sh
-
-after_script:
   - root-config --features
