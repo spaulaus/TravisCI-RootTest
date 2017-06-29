@@ -16,16 +16,10 @@ addons:
 
 before_install:
   - export CC=gcc-5 && export CXX=g++-5
-  - gcc-5 --version
   - sudo apt-get -qq update
-  - git clone https://github.com/unittest-cpp/unittest-cpp.git
-  - cd unittest-cpp/builds/
-  - cmake ../
-  - sudo make -j4 install
-  - cd ../../
 
 install:
-  - time wget --no-check-certificate https://drive.google.com/uc?export=download&id=0B_XQp_kYuMwQSzZERGZyVkdCM3c
+  - time wget --no-check-certificate https://downloads.sourceforge.net/project/travis-ci-root-builds/ROOT-6.03.02_Python-2.7.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Ftravis-ci-root-builds%2Ffiles%2F%3Fsource%3Dnavbar&ts=1498695853&use_mirror=phoenixnap
   - time tar zxf ROOT-6.03.02_Python-2.7.tar.gz
   - mv ROOT-6.03.02_Python-2.7 root
   - source root/bin/thisroot.sh
