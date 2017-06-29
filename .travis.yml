@@ -24,3 +24,21 @@ install:
   - mv ./opt/root /opt
   - source /opt/root/v6-09-02-760-g97cc38c/bin/thisroot.sh
   - root-config --features
+  - git clone https://github.com/unittest-cpp/unittest-cpp.git
+  - cd unittest-cpp/builds/
+  - cmake ../
+  - sudo make -j4 install
+  - cd ../../
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ../
+
+script:
+  - make -j4
+  - ./tests/unittest
+
+after_script:
+  - cd ../
+  - rm -rf build
