@@ -22,8 +22,6 @@ before_install:
   - docker pull rootproject/root-ubuntu16
 
 install:
-  - source /opt/root/v6-09-02-1506-g7e88f47/bin/thisroot.sh
-  - root-config --features
   - git clone https://github.com/unittest-cpp/unittest-cpp.git
   - cd unittest-cpp/builds/
   - cmake ../
