@@ -7,6 +7,8 @@ language: cpp
 sudo: required
 dist: trusty
 os: linux
+services:
+  - docker
 addons:
   apt:
     sources:
@@ -15,15 +17,11 @@ addons:
       - g++-5
 
 before_install:
+  - sudo apt-get -qq update
   - export CC=gcc-5 && export CXX=g++-5
-  - sudo apt-get install -y git dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev gfortran libssl-dev libpcre3-dev xlibmesa-glu-dev libglew1.5-dev libftgl-dev libmysqlclient-dev libfftw3-dev libcfitsio3-dev graphviz-dev libavahi-compat-libdnssd-dev libldap2-dev python-dev libxml2-dev libkrb5-dev libgsl0-dev libqt4-dev
-  #- sudo apt-get -qq update
+  - docker run --rm -it rootproject/root-ubuntu16
 
 install:
-  - wget https://www.dropbox.com/s/9066k791gwsqym8/root-v6-09-02-1506-g7e88f47.tbz
-  - tar xjf root-v6-09-02-1506-g7e88f47.tbz
-  - mkdir -v /opt/root
-  - mv -v ./v6-09-02-1506-g7e88f47 /opt/root/
   - source /opt/root/v6-09-02-1506-g7e88f47/bin/thisroot.sh
   - root-config --features
   - git clone https://github.com/unittest-cpp/unittest-cpp.git
