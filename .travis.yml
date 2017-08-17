@@ -19,7 +19,7 @@ addons:
 before_install:
   - sudo apt-get -qq update
   - export CC=gcc-5 && export CXX=g++-5
-  - docker run --rm -it rootproject/root-ubuntu16
+  - docker pull rootproject/root-ubuntu16
 
 install:
   - source /opt/root/v6-09-02-1506-g7e88f47/bin/thisroot.sh
