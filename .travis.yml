@@ -36,22 +36,17 @@ install:
   - mkdir -p /opt/xia/
   - cp -r xia-api /opt/xia/api
   - ln -s /opt/xia/api /opt/xia/current
-#  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git
-#  - cd paass-laughing-conqueror
-#  - mkdir paass-build
-#  - cd paass-build
-#  - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=OFF -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF
-#  - cd ../../
+  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git
+  - cd paass-laughing-conqueror
+  - git checkout dev
+  - mkdir paass-build
+  - cd paass-build
+  - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=OFF -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF
+  - cd ../../
 
 before_script:
-  - mkdir build
-  - cd build
-  - cmake ../
 
 script:
-  - make -j4
-  - ./tests/unittest
-
+  
 after_script:
-  - cd ../
-  - rm -rf build
+  
