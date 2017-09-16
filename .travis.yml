@@ -36,9 +36,8 @@ before_install:
   - git checkout dev
   - mkdir paass-build && cd paass-build
   - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF
-
+  - 
 script:
-  - make
-  
-after_script:
-  - for test in `find ~/ -name "unittest-*"`;do $test;done
+  - make -j8 install
+  - cd ../install/bin/unittests
+  - ./unittests*
