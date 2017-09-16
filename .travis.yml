@@ -19,6 +19,10 @@ addons:
       - libgsl0-dev
       - lib64ncurses5-dev
 
+env:
+  global:
+    - MAKEFLAGS="-j 5"
+    
 before_install:
   - export CC=gcc-5 && export CXX=g++-5 && export FC=gfortran-5
   - sudo apt-get -qq update --install-suggests
