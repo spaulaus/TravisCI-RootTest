@@ -40,4 +40,4 @@ before_install:
 script:
   - make -j8 install
   - cd ../install/bin/unittests
-  - ./unittest-*
+  - (for test in *; do ./$test; if [ $? != 0 ]; then false; exit; fi; done)
