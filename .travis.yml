@@ -32,9 +32,10 @@ install:
   - sudo make -j4 install
   - cd ../../
   - git clone https://github.com/spaulaus/xia-api.git
-  - make -C ./xia-api/software 
-  - sudo cp -r xia-api /opt/xia/api
-  - sudo ln -s /opt/xia/api /opt/xia/current
+  - make -C ./xia-api/software
+  - mkdir -p /opt/xia/
+  - cp -r xia-api /opt/xia/api
+  - ln -s /opt/xia/api /opt/xia/current
 #  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git
 #  - cd paass-laughing-conqueror
 #  - mkdir paass-build
