@@ -40,4 +40,4 @@ before_install:
 script:
   - make -j8 install
   - cd ../install/bin/unittests
-  - ./unittests*
+  - ./unittest-*
