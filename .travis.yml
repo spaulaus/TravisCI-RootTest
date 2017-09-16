@@ -15,11 +15,15 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-5
+      - gfortran-5
+      - gsl-bin
+      - libgsl0-dev
+      - lib64ncurses5-dev
 
 before_install:
   - sudo apt-get -qq update
-  - export CC=gcc-5 && export CXX=g++-5
-  - docker pull rootproject/root-ubuntu16
+  - export CC=gcc-5 && export CXX=g++-5 && export FC=gfortran5
+#  - docker pull rootproject/root-ubuntu14
 
 install:
   - git clone https://github.com/unittest-cpp/unittest-cpp.git
@@ -27,6 +31,16 @@ install:
   - cmake ../
   - sudo make -j4 install
   - cd ../../
+  - git clone https://github.com/spaulaus/xia-api.git
+  - make -C ./xia-api/software 
+  - sudo cp -r xia-api /opt/xia/api
+  - sudo ln -s /opt/xia/api /opt/xia/current
+#  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git
+#  - cd paass-laughing-conqueror
+#  - mkdir paass-build
+#  - cd paass-build
+#  - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=OFF -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF
+#  - cd ../../
 
 before_script:
   - mkdir build
