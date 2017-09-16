@@ -47,5 +47,5 @@ script:
   - make
   
 after_script:
-  - for test in `find ./ -name "unittest-*"`;do ./ $test;done
+  - for test in `find ~/ -name "unittest-*"`;do $test;done
   
