@@ -7,8 +7,6 @@ language: cpp
 sudo: required
 dist: trusty
 os: linux
-services:
-  - docker
 addons:
   apt:
     sources:
@@ -16,16 +14,11 @@ addons:
     packages:
       - g++-5
       - gfortran-5
-      - gsl-bin
-      - libgsl0-dev
-      - lib64ncurses5-dev
 
 before_install:
+  - export CC=gcc-5 && export CXX=g++-5 && export FC=gfortran-5
   - sudo apt-get -qq update
-  - export CC=gcc-5 && export CXX=g++-5 && export FC=gfortran5
-#  - docker pull rootproject/root-ubuntu14
-
-install:
+  - sudo apt-get install gsl-bin libgsl0-dev lib64ncurses5-dev
   - git clone https://github.com/unittest-cpp/unittest-cpp.git
   - cd unittest-cpp/builds/
   - cmake ../
