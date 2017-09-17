@@ -34,6 +34,11 @@ before_install:
   - git checkout dev
   - mkdir paass-build && cd paass-build
   - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF
+  - make -j8 install
+  - (for test in ../install/bin/unittests/*; do ./$test; if [ $? != 0 ]; then false; exit; fi; done)
+  - cd .. && mkdir paass-build-all-flags && cd paass-build-all-flags
+  - cmake ../ -DPAASS_BUILD_SCAN_UTILITIES=ON -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF -DPAASS_UTKSCAN_GAMMA_GATES=ON -DPAASS_UTKSCAN_ONLINE=ON -DPAASS_UTKSCAN_TREE_DEBUG=ON -DPAASS_UTKSCAN_VERBOSE=ON
+  - make -j8
 
 script:
   - make -j8 install
