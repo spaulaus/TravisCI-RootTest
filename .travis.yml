@@ -38,4 +38,5 @@ before_install:
 script:
   - make -j8 install
   - cd ../install/bin/unittests
-  - (for test in *; do ./$test; if [ $? != 0 ]; then false; exit; fi; done)​
+  - (for test in *; do ./$test; if [ $? != 0 ]; then false; exit; fi; done)
+  
