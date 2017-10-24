@@ -20,8 +20,21 @@ addons:
 env:
   global:
     - MAKEFLAGS="-j 5"
+before_install:
+  - export CC=gcc-5 && export CXX=g++-5 && export FC=gfortran-5
+  - sudo apt-get -qq update --install-suggests
+  - mkdir -p /opt
+  - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
+  - cmake ../ && sudo make -j8 install && cd ../../
+  - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
+  - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
+  - ln -s /opt/xia/api /opt/xia/current
+  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
+  - git checkout dev
+  - mkdir paass-build && mkdir install
 
 install:
   - docker run --name ub16 -idv ${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR} rootproject/root-ubuntu16
 
-script: docker exec ub16 bash ${TRAVIS_BUILD_DIR}/.travis-script.sh  
+script: 
+  - docker exec ub16 bash ${TRAVIS_BUILD_DIR}/.travis-script.sh  
