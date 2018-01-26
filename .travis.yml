@@ -32,6 +32,9 @@ before_install:
   - git clone https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - git checkout dev
   - mkdir paass-build && mkdir install
+  - cd paass-build && cmake ../ -DPAASS_BUILD_UTKSCAN=TRUE -DPAASS_BUILD_TESTS=TRUE && make -j8 install
+  - cd ../install/bin/unittests/
+  - (for test in *; do echo $test; ./$test; if [ $? != 0 ]; then false; exit; fi; done)
 
 #install:
 #  - docker run --name ub16 -idv ${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR} rootproject/root-ubuntu16
