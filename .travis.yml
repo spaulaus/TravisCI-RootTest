@@ -17,9 +17,7 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
       env:
-         - CC=gcc-5
-         - CXX=g++-5
-
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
     - os: linux
       addons:
         apt:
@@ -31,11 +29,11 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
       env:
-        - CC=gcc-6
-        - CXX=g++-6
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
 before_install:
   - sudo apt-get -qq update --install-suggests
+  - eval "${MATRIX_EVAL}"
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
   - cmake ../ && sudo make install && cd ../../
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
