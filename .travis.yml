@@ -32,7 +32,7 @@ matrix:
             - libncurses5-dev
       env:
         - CC=gcc-6
-        - CXX=g++-6"
+        - CXX=g++-6
 
 before_install:
   - sudo apt-get -qq update --install-suggests
