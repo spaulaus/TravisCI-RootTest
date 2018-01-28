@@ -17,7 +17,7 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
       env:
-         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5 && FC=gfortran-5"
+         - MATRIX_EVAL="export CC=gcc-5 && export CXX=g++-5"
 
     - os: linux
       addons:
@@ -30,7 +30,7 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
       env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6 && FC=gfortran-6"
+        - MATRIX_EVAL="export CC=gcc-6 && export CXX=g++-6"
 
 before_install:
 #  - sudo apt-get -qq update --install-suggests
