@@ -35,7 +35,7 @@ matrix:
         - CXX=g++-6"
 
 before_install:
-#  - sudo apt-get -qq update --install-suggests
+  - sudo apt-get -qq update --install-suggests
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
   - cmake ../ && sudo make install && cd ../../
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
