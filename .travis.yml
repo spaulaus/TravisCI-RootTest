@@ -4,28 +4,8 @@ env:
 language: cpp
 sudo: required
 
-env:
-  global:
-    - MAKEFLAGS="-j 5"
-
 matrix:
   include:
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-            - gfortran4
-            - gsl-bin
-            - libgsl0-dev
-            - lib64ncurses5-dev
-      env:
-         - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9 && FC=gfortran-4"
-
-    # works on Precise and Trusty
     - os: linux
       addons:
         apt:
@@ -34,12 +14,11 @@ matrix:
           packages:
             - g++-5
             - gsl-bin
-            - libgsl0-dev
-            - lib64ncurses5-dev
+            - libgsl-dev
+            - libncurses5-dev
       env:
          - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5 && FC=gfortran-5"
 
-    # works on Precise and Trusty
     - os: linux
       addons:
         apt:
@@ -48,21 +27,20 @@ matrix:
           packages:
             - g++-6
             - gsl-bin
-            - libgsl0-dev
-            - lib64ncurses5-dev
+            - libgsl-dev
+            - libncurses5-dev
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6 && FC=gfortran-6"
 
 before_install:
-  - sudo apt-get -qq update --install-suggests
-  - mkdir -p /opt
+#  - sudo apt-get -qq update --install-suggests
+  - mkdir /opt
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
-  - cmake ../ && sudo make -j8 install && cd ../../
+  - cmake ../ && sudo make install && cd ../../
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
   - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
   - ln -s /opt/xia/api /opt/xia/current
-  - git clone https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
-  - git checkout dev
+  - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - mkdir paass-build && mkdir install
   - cd paass-build && cmake ../ -DPAASS_BUILD_UTKSCAN=TRUE -DPAASS_BUILD_TESTS=TRUE -DPAASS_USE_ROOT=OFF && make install
   - cd ../install/bin/unittests/
