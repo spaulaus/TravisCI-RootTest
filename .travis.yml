@@ -34,7 +34,6 @@ matrix:
 
 before_install:
 #  - sudo apt-get -qq update --install-suggests
-  - mkdir /opt
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
   - cmake ../ && sudo make install && cd ../../
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
