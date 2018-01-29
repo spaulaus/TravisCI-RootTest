@@ -41,7 +41,7 @@ before_install:
   - ln -s /opt/xia/api /opt/xia/current
   - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - mkdir paass-build && mkdir install
-  - cd paass-build && cmake ../ -DPAASS_BUILD_TESTS=TRUE -DPAASS_USE_ROOT=OFF && make install
+  - cd paass-build && cmake ../ -DPAASS_BUILD_TESTS=TRUE -DPAASS_BUILD_UTKSCAN=TRUE -DPAASS_USE_ROOT=OFF && make install
 
 script:
   - cd ../install/bin/unittests/
