@@ -17,7 +17,7 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
             - libroot*
-            - libc6-dev
+            - libc6-dev-i386
       env:
         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
     - os: linux
