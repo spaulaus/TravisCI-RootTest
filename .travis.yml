@@ -17,7 +17,6 @@ matrix:
             - libgsl0-dev
             - libncurses5-dev
             - libroot*
-            - libc6-dev-i386
       env:
         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
     - os: linux
@@ -30,6 +29,7 @@ matrix:
             - gsl-bin
             - libgsl0-dev
             - libncurses5-dev
+            - libroot*
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
 
@@ -43,7 +43,7 @@ before_install:
   - ln -s /opt/xia/api /opt/xia/current
   - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - mkdir paass-build && mkdir install
-  - cd paass-build && cmake ../ -DPAASS_BUILD_TESTS=TRUE -DPAASS_BUILD_UTKSCAN=TRUE -DPAASS_USE_ROOT=ON && make install
+  - cd paass-build && cmake ../ -DPAASS_BUILD_TESTS=TRUE -DPAASS_BUILD_UTKSCAN=TRUE -DPAASS_USE_ROOT=ON -DPAASS_USE_SCAN_UTILITIES=OFF && make install
 
 script:
   - cd ../install/bin/unittests/
