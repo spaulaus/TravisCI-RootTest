@@ -47,6 +47,20 @@ matrix:
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
         - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+            - gsl-bin
+            - libgsl0-dev
+            - libncurses5-dev
+            - libroot*
+      env:
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+        - BUILD_OPTIONS="-DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_TESTS=ON"
 
 before_install:
   - sudo apt-get -qq update --install-suggests
