@@ -24,6 +24,7 @@ Tell us what should happen
 Please attach any error logs here. 
 
 ## Acceptance Criteria
+<!-- For the development team to fill out -->
 1. 
 2. 
 3. 
