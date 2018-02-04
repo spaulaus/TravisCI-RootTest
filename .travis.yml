@@ -71,8 +71,7 @@ before_install:
   - ln -s /opt/xia/api /opt/xia/current
   - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - mkdir paass-build && mkdir install
-  - cd paass-build && cmake ../ ${BUILD_OPTIONS} && make install
+  - cd paass-build
 
 script:
-  - cd ../install/bin/unittests/
-  - (for test in *; do echo $test; ./$test; if [ $? != 0 ]; then false; exit; fi; done)
+  - cmake ../ ${BUILD_OPTIONS} && make && ctest -j8
