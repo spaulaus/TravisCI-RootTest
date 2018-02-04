@@ -22,7 +22,7 @@
 3. 
 
 ## Bug Report
-### Your Environment (for bugs)
+### Your Environment
 <!--- Include as many relevant details about the environment you experienced the bug in -->
 | Component | Value  |
 |--|--|
