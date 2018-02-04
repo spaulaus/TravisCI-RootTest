@@ -25,4 +25,3 @@ Here are some resources for those new to pull requests:
 * [Make a Pull Request](http://makeapullrequest.com/)
 * [First Timers Only](http://www.firsttimersonly.com/)
 * [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
-
