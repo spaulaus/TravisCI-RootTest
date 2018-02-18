@@ -29,7 +29,7 @@ before_install:
   - cmake ../ && sudo make install && cd ../../
   - mkdir -p /opt/plx/ && cd /opt/plx 
   - git clone https://github.com/spaulaus/plx-api.git && ln -s plx-api current && cd plx-api
-  - make all && cd $ORIG_DIR
+  - export PLX_SDK_DIR=$PWD && make all && cd $ORIG_DIR
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
   - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
   - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
