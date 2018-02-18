@@ -1,9 +1,6 @@
-# TravisCI-Tests
-Repo to test components of Travis-CI
+[![Build Status](https://travis-ci.org/spaulaus/TravisCI-Tests.svg?branch=master)](https://travis-ci.org/spaulaus/TravisCI-Tests)
 
-# Build Status
-Branch | Build status
----------|-------------:
-Master | [![Build Status](https://travis-ci.org/spaulaus/paass-laughing-conqueror.svg?branch=master)](https://travis-ci.org/spaulaus/paass-laughing-conqueror)
-Test | [![Build Status](https://travis-ci.org/spaulaus/paass-laughing-conqueror.svg?branch=test)](https://travis-ci.org/spaulaus/paass-laughing-conqueror)
-Dev | [![Build Status](https://travis-ci.org/spaulaus/paass-laughing-conqueror.svg?branch=dev)](https://travis-ci.org/spaulaus/paass-laughing-conqueror)
+Repository that I use to test various features of TravisCI to use it with the following repositories:
+[plx-api](https://github.com/spaulaus/plx-api)
+[xia-api](https://github.com/spaulaus/xia-api)
+[paass-laughing-conqueror](https://github.com/spaulaus/paass-laughing-conqueror)
