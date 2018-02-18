@@ -12,33 +12,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-            - libroot*
-      env:
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_USE_ROOT=OFF"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
             - g++-6
             - gsl-bin
             - libgsl0-dev
@@ -46,29 +19,19 @@ matrix:
             - libroot*
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-        - BUILD_OPTIONS="-DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_TESTS=ON"
+        - BUILD_OPTIONS="-DPAASS_BUILD_ANALYSIS=OFF -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_SETUP=ON"
 
 before_install:
   - sudo apt-get -qq update --install-suggests
   - eval "${MATRIX_EVAL}"
+  - export ORIG_DIR=$PWD
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
   - cmake ../ && sudo make install && cd ../../
+  - mkdir -p /opt/plx/ && cd /opt/plx 
+  - git clone https://github.com/spaulaus/plx-api.git && ln -s plx-api current && cd plx-api
+  - make all && cd $ORIG_DIR
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
   - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
-  - ln -s /opt/xia/api /opt/xia/current
   - git clone -b dev https://github.com/spaulaus/paass-laughing-conqueror.git && cd paass-laughing-conqueror
   - mkdir paass-build && mkdir install
   - cd paass-build
