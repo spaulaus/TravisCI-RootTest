@@ -19,7 +19,7 @@ matrix:
             - libroot*
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-        - BUILD_OPTIONS="-DPAASS_BUILD_ANALYSIS=OFF -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_SETUP=ON"
+        - BUILD_OPTIONS="-DPAASS_BUILD_ANALYSIS=ON -DPAASS_BUILD_ACQ=ON -DPAASS_BUILD_SETUP=ON"
 
 before_install:
   - sudo apt-get -qq update --install-suggests
