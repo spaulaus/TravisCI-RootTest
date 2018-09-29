@@ -47,7 +47,7 @@ before_install:
   - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
   - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
   - ln -s /opt/xia/api /opt/xia/current
-  - git clone -b dev https://github.com/spaulaus/paass-lc.git && cd paass-lc
+  - git clone -b issue173 https://github.com/spaulaus/paass-lc.git && cd paass-lc
   - mkdir paass-build && mkdir install
   - cd paass-build
 
