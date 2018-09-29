@@ -6,7 +6,6 @@ sudo: required
 
 matrix:
   include:
-    # works on Precise and Trusty
     - os: linux
       addons:
         apt:
@@ -21,7 +20,6 @@ matrix:
       env:
          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
          - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-  include:
     - os: linux
       addons:
         apt:
@@ -49,6 +47,20 @@ matrix:
             - libroot*
       env:
         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - gsl-bin
+            - libgsl0-dev
+            - libncurses5-dev
+            - libroot*
+      env:
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
         - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
 
 before_install:
