@@ -8,4 +8,5 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - python -m unittest -v python_unittest.py
+  - python -m unittest discover ./ "*_test.py"
+  
