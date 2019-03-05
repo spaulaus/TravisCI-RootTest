@@ -1,83 +1,17 @@
-env:
-  global:
-    - MAKEFLAGS="-j 8"
-language: cpp
-sudo: required
-
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-            - libroot*
-      env:
-         - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-         - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-            - libroot*
-      env:
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-            - libroot*
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-            - gsl-bin
-            - libgsl0-dev
-            - libncurses5-dev
-            - libroot*
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-
-before_install:
-  - sudo apt-get -qq update --install-suggests
-  - eval "${MATRIX_EVAL}"
-  - export ORIG_DIR=$PWD
-  - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
-  - cmake ../ && sudo make install && cd ../../
-  - mkdir -p /opt/plx/ && cd /opt/plx
-  - git clone https://github.com/spaulaus/plx-api.git && ln -s plx-api current && cd plx-api
-  - export PLX_SDK_DIR=$PWD && make all && cd $ORIG_DIR
-  - git clone https://github.com/spaulaus/xia-api.git && cd xia-api
-  - mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/opt && make install && cd ../../
-  - ln -s /opt/xia/api /opt/xia/current
-  - git clone -b issue173 https://github.com/spaulaus/paass-lc.git && cd paass-lc
-  - mkdir paass-build && mkdir install
-  - cd paass-build
-
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev"  # 3.5 development branch
+  - "3.6"
+  - "3.6-dev"  # 3.6 development branch
+  - "3.7-dev"  # 3.7 development branch
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+# command to run tests
 script:
-  - cmake ../ ${BUILD_OPTIONS} && make -j8 && ctest -j8
+  - pytest
