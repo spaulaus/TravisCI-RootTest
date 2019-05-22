@@ -1,7 +1,7 @@
 ---
 name: Research
 about: A task that's going to be research for other tasks. 
-labels: research, documentation, "help wanted"
+labels: research, documentation, help-wanted
 ---
 <!--- Provide a short summary in the Title -->
 # What needs researched?
