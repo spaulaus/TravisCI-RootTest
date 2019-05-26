@@ -1,3 +1,5 @@
+# Dolosse - A Kafka based Data Acquisition System
+
 [![Build Status](https://travis-ci.org/spaulaus/TravisCI-Tests.svg?branch=master)](https://travis-ci.org/spaulaus/TravisCI-Tests)
 
 Repository that I use to test various features of TravisCI to use it with the following repositories:
