@@ -2,7 +2,6 @@ env:
   global:
     - MAKEFLAGS="-j 8"
 language: cpp
-arch: amd64
 
 jobs:
   include:
