@@ -17,10 +17,9 @@ jobs:
         - g++-7
         - libgsl-dev
         - libncurses5-dev
-        - python3
     env:
-    - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-    - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
+      - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+      - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
   - name: GCC 8 Test
     addons:
       apt:
@@ -30,10 +29,9 @@ jobs:
         - g++-8
         - libgsl-dev
         - libncurses5-dev
-        - python3
     env:
-    - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
+      - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
   - name: GCC 9 Test
       addons:
         apt:
@@ -42,7 +40,6 @@ jobs:
           packages:
             - libgsl-dev
             - libncurses5-dev
-            - python3
       env:
         - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
 
@@ -67,3 +64,6 @@ before_install:
 script:
   - mkdir paass-build && cd paass-build
   - cmake ../ ${BUILD_OPTIONS} && make -j8 && ctest -j8
+  - gcc --version
+  - cmake --version
+  - g++ --version
