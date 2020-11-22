@@ -46,7 +46,6 @@ jobs:
 before_install:
   - sudo apt-get -qq update --install-suggests
   - eval "${MATRIX_EVAL}"
-  - cmake --version
   - export ORIG_DIR=$PWD
   - git clone https://github.com/unittest-cpp/unittest-cpp.git && cd unittest-cpp/builds/
   - cmake ../ && sudo make install && cd $ORIG_DIR
