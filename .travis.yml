@@ -4,7 +4,7 @@ env:
 language: cpp
 arch: amd64
 
-matrix:
+jobs:
   include:
   - os: linux
   - arch: amd64
