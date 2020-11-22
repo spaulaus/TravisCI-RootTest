@@ -2,11 +2,13 @@ env:
   global:
     - MAKEFLAGS="-j 8"
 language: cpp
-sudo: required
+arch: amd64
 
 matrix:
   include:
   - os: linux
+  - arch: amd64
+  - dist: focal
     addons:
       apt:
         sources:
