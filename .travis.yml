@@ -8,7 +8,7 @@ arch: amd64
 
 jobs:
   include:
-  - cpp: 7
+  - name: GCC 7 Test
     addons:
       apt:
         sources:
@@ -21,7 +21,7 @@ jobs:
     env:
     - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-  - cpp: 8
+  - name: GCC 8 Test
     addons:
       apt:
         sources:
