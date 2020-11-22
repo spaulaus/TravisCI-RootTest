@@ -8,40 +8,43 @@ arch: amd64
 
 jobs:
   include:
-  - name: GCC 7 Test
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - g++-7
-        - libgsl-dev
-        - libncurses5-dev
-    env:
-      - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-      - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-  - name: GCC 8 Test
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - g++-8
-        - libgsl-dev
-        - libncurses5-dev
-    env:
-      - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-      - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-  - name: GCC 9 Test
+    - name: GCC 7 Test
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - g++-7
             - libgsl-dev
             - libncurses5-dev
+            - python3
       env:
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
         - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
+    - name: GCC 8 Test
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+            - libgsl-dev
+            - libncurses5-dev
+            - python3
+      env:
+        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+        - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
+    - name: GCC 9 Test
+        addons:
+          apt:
+            sources:
+              - ubuntu-toolchain-r-test
+            packages:
+              - libgsl-dev
+              - libncurses5-dev
+              - python3
+        env:
+          - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
 
 before_install:
   - sudo apt-get -qq update --install-suggests
