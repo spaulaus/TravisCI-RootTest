@@ -20,7 +20,7 @@ jobs:
     env:
     - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     - BUILD_OPTIONS="-DPAASS_BUILD_TESTS=ON -DPAASS_BUILD_UTKSCAN=ON -DPAASS_BUILD_ROOT_SCANNER=OFF -DPAASS_BUILD_SETUP=ON"
-  include:
+
     addons:
       apt:
         sources:
