@@ -71,7 +71,7 @@ before_install:
 
 script:
   - mkdir build 
-  - cd paass
+  - cd build
   - cmake ../ ${BUILD_OPTIONS} 
   - make -j12 
   - ./Tests/tests
